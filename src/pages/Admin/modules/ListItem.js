@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import Switch from '@material-ui/core/Switch';
 
-export default ({openDelete, item, openNotification, toggleDisplayPost}) =>
+export default ({openDelete, item, toggleDisplayPost}) =>
   <li>
     <div className='date-content'>
       <h3>{item.date}</h3>
@@ -20,8 +20,5 @@ export default ({openDelete, item, openNotification, toggleDisplayPost}) =>
         onChange={toggleDisplayPost(item)}
         color='default'
       />
-    </div>
-    <div className='create-notification'>
-      <div className='button' onClick={openNotification(item)}>Create</div>
     </div>
   </li>
