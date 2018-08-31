@@ -8,6 +8,7 @@ export const SUCCESSFUL_UPLOAD = 'SUCCESSFUL_UPLOAD'
 export const FAILED_UPLOAD = 'FAILED_UPLOAD'
 export const DELETE_POST = 'DELETE_POST'
 export const SUCCESSFUL_LOGIN = 'SUCCESSFUL_LOGIN'
+export const SUCCESSFUL_LOGIN_READER = 'SUCCESSFUL_LOGIN_READER'
 export const SUCCESSFUL_LOGOUT = 'SUCCESSFUL_LOGOUT'
 export const FAILED_LOGIN = 'FAILED_LOGIN'
 
@@ -54,17 +55,23 @@ export const logIn = (dispatch, email, password) => {
 
   auth.onAuthStateChanged(user => {
     if (user) {
-      dispatch({
-        type: SUCCESSFUL_LOGIN,
-        payload: user
+      const uid = user.uid;
+      database.ref('users/' + uid).on('value', snapshot => {
+        const userRole =  snapshot.val().role
+        console.log('snapshot.val()', snapshot.val())
+        if(userRole === 'reader') {
+          dispatch({
+            type: SUCCESSFUL_LOGIN_READER,
+            payload: user
+          })
+        } else if (userRole === 'admin') {
+          dispatch({
+            type: SUCCESSFUL_LOGIN,
+            payload: user
+          })
+        }
       })
-      var displayName = user.displayName;
-      var email = user.email;
-      var emailVerified = user.emailVerified;
-      var photoURL = user.photoURL;
-      var isAnonymous = user.isAnonymous;
-      var uid = user.uid;
-      var providerData = user.providerData;
+
     } else {
       dispatch({
         type: SUCCESSFUL_LOGOUT

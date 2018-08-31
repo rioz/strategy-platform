@@ -64,6 +64,6 @@ class Nav extends Component {
 }
 
 export default connect(state => ({
-  loggedIn: state.data.loggedIn,
+  loggedIn: state.data.loggedInAdmin,
   user: state.data.user
 }))(Nav)

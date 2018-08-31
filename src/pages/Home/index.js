@@ -3,10 +3,10 @@ import {Footer, About, Heading, Posts, Login} from './modules'
 import './styles/index.css'
 import {connect} from 'react-redux'
 
-const Home = ({loggedIn}) =>
+const Home = ({loggedInReader, loggedInAdmin}) =>
 <Fragment>
   {
-    loggedIn?
+    loggedInReader || loggedInAdmin?
     <div className="Home">
       <Heading/>
       <About/>
@@ -22,5 +22,6 @@ const Home = ({loggedIn}) =>
 
 
 export default connect(state => ({
-  loggedIn: state.data.loggedIn,
+  loggedInReader: state.data.loggedInReader,
+  loggedInAdmin: state.data.loggedInAdmin,
 }))(Home)

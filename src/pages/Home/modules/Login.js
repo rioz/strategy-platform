@@ -8,12 +8,30 @@ class Login extends Component {
     email: 'default@default.com',
     password: ''
   }
+
+  pressEnterKey = (e) => {
+    const key = e.which || e.keyCode
+    if (key === 13) {
+      e.preventDefault()
+      this.handleLogin()
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener('keypress', this.pressEnterKey)
+  }
+  componentWillUnmount() {
+    document.removeEventListener('keypress', this.pressEnterKey)
+  }
+
   handleLogin = () => {
     const {email, password} = this.state
     if(password.length){
+      console.log('loginAttempt', email, password)
       logIn(this.props.dispatch, email, password)
     }
   }
+
   handleTextInput = (e) => {
     this.setState({[e.target.dataset.type]: e.target.value})
   }
@@ -33,13 +51,6 @@ class Login extends Component {
           }
           <form action="">
             <h2>{text}</h2>
-            {/* <input
-              value={email}
-              onChange={this.handleTextInput}
-              data-type='email'
-              autoComplete="on"
-              type="text"
-            /> */}
             <h3>Password</h3>
             <input
               value={password}

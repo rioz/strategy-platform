@@ -3,11 +3,11 @@ import {Nav, Posts, NewPost, Footer, Login} from './modules'
 import './styles/index.css'
 import {connect} from 'react-redux'
 
-const Admin = ({loggedIn}) =>
+const Admin = ({loggedInAdmin}) =>
   <div className="Admin">
     <Nav/>
     {
-      loggedIn?
+      loggedInAdmin?
       <Fragment>
         <NewPost/>
         <Posts/>
@@ -21,5 +21,5 @@ const Admin = ({loggedIn}) =>
   </div>
 
 export default connect(state => ({
-  loggedIn: state.data.loggedIn,
+  loggedInAdmin: state.data.loggedInAdmin,
 }))(Admin)

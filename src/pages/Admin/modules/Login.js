@@ -21,6 +21,8 @@ class Login extends Component {
   render () {
     const {email, password} = this.state
     const {error, errorMessage} = this.props
+    console.log('errorMessage', errorMessage)
+    console.log('error', error)
     return (
       <div className='Login'>
         <div className='panel'>
