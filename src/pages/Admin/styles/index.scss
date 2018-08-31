@@ -1,0 +1,374 @@
+@import "src/styles/_variables";
+
+div#simple-menu {
+  transform: translate(-10px, 32px);
+  span {
+    outline: none;
+    li {
+      font-size: 15px;
+      width: 130px;
+      font-family: 'Work Sans', sans-serif;
+      height: 16px;
+    }
+  }
+}
+
+div.button {
+  cursor: pointer;
+  padding: 10px 25px;
+  background: $hoverblue;
+  box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.2);
+  color: white;
+  border-radius: 8px;
+  transition: 0.1s ease-in;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  &.bright {
+    background: $brightblue !important;
+  }
+  &.error {
+    background: $darkergrey !important;
+    cursor: not-allowed !important;
+    transform: translateY(0px) !important;
+    opacity: 1 !important;
+  }
+  &:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+  }
+}
+
+div.Admin {
+  background: white;
+  nav {
+    height: 50px;
+    display: grid;
+    grid-template-columns: 40px 150px 3fr 1fr 70px;
+    background: $navyblue;
+    font-weight: 300;
+    font-size: 15px;
+    span {
+      align-self: center;
+      font-weight: 300;
+      color: $backgroundgrey;
+      &.home {
+        grid-column: 2;
+      }
+      &.title {
+        grid-column: 3;
+      }
+      &.auth {
+        justify-self: end;
+        grid-column: 4;
+        height: 36px;
+        margin: 7px;
+        font-family: 'Work Sans', sans-serif;
+        button {
+          height: 36px;
+          min-height: 36px;
+          span {
+            line-height: normal;
+            text-transform: none;
+          }
+        }
+      }
+    }
+    div.HomeIcon {
+      display: inline-block;
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 7px;
+      &:hover {
+        background: $hoverblue;
+      }
+      svg {
+        fill: white;
+      }
+    }
+  }
+  ::selection {
+    background: $brightblue;
+    color: white;
+  }
+  ::-moz-selection {
+    background:$brightblue;
+    color: white;
+  }
+
+  div.NewPost {
+    background: white;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 250px;
+    padding: 60px 0 70px 0;
+  }
+
+  div.Posts {
+    margin: 0px 0px;
+    ul {
+      margin: 0;
+      margin-top: 10px;
+      padding: 0px 0px 0px 0;
+      background: $backgroundgrey;
+      li {
+        padding: 0 40px 0 40px;
+        background: $backgroundgrey;
+        display: grid;
+        grid-template-columns:150px 3fr 120px 200px;
+        position: relative;
+        list-style:none;
+        border-bottom: 1px solid #dee2e8;
+        .date { grid-column: 1;   text-align: left; }
+        .posts { grid-column: 2;   text-align: left; }
+        .display { grid-column: 3; }
+        .notifications { grid-column: 4;}
+        &.headings {
+          border-bottom: 3px solid $darkergrey;
+          padding-bottom: 10px;
+          padding-top: 10px;
+          text-align: center;
+        }
+        h3 {
+          margin: 0;
+          padding: 7px 0 0 0;
+          font-weight: 500;
+        }
+        div.date-content {
+          margin-top: 14px;
+          display: flex;
+          justify-content:flex-start;
+          h3 {
+            font-size: 16px;
+          }
+        }
+        div.post-content {
+          padding: 15px 0;
+          display: grid;
+          grid-template-columns:4fr 108px 30px;
+          grid-template-rows:1fr 1fr 1fr;
+          h3 {
+            padding: 5px 0;
+            grid-column: 1;
+            grid-row: 1;
+          }
+          p {
+            line-height: 1.5;
+            margin: 0;
+            font-size: 15px;
+            padding: 5px 0;
+            &.link {
+              grid-column: 1;
+              grid-row: 3;
+            }
+            &.description {
+              grid-column: 1;
+              grid-row: 2;
+            }
+          }
+          div.delete {
+            grid-column: 2;
+            grid-row: 2;
+            text-align: center;
+            div {
+              background: $darkergrey;
+              color: $navyblue;
+            }
+          }
+        }
+        div.switch {
+          // margin-left: 10px;
+          display: flex;
+          justify-content:center;
+          align-items: center;
+          border-left: 1px solid $darkergrey;
+          &.active span{
+            color: $brightblue;
+          }
+          > span {
+            color:white;
+            > span {
+              &:last-of-type {
+                background: $darkergrey !important;
+                opacity: 1  !important;
+              }
+            }
+          }
+        }
+        div.create-notification {
+          // margin-left: 10px;
+          border-left: 1px solid $darkergrey;
+          display: flex;
+          justify-content:center;
+          align-items: center;
+          div {
+            display: inline-block;
+            width: 120px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+  footer {
+    div.top {
+      margin-top: 0px;
+      padding: 1px 0;
+      background: $darkergrey;
+    }
+    div.bottom {
+      background: $hoverblue;
+      background: #3a3a4f;
+      background: $backgroundgrey;
+      height: 70px;
+      opacity: 0.7;
+    }
+  }
+}
+div.modal {
+  max-width: 600px;
+  width: 80vw;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  flex-direction: column;
+  padding: 0 25px 30px 25px;
+  div {
+    padding: 20px 0 7px 5px;
+  }
+  &.notification {
+    min-height: 500px;
+  }
+  &.delete, &.notification {
+    padding: 10px 45px 10px 45px;
+    h4 {
+      padding: 5px 0 10px 0;
+      text-align: center;
+      color: $brightblue;
+    }
+    div.display-post{
+      background: $backgroundgrey;
+      padding: 20px 10px;
+      h3,div {
+        margin: 0px 0;
+        padding: 8px 5px;
+      }
+    }
+  }
+  div.upload-post {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    // flex-direction: column;
+    div {
+      margin-top: 15px;
+      cursor: pointer;
+      color: white;
+      border-radius: 8px;
+      padding: 10px 25px;
+      // background: $orange;
+    }
+  }
+  input {
+    padding: 10px 5px;
+    width: 100%;
+    line-height: 20px;
+    font-size: 16px;
+    text-indent: 5px;
+    outline: none;
+    border-radius: 4px;
+    border: 2px solid $darkergrey;
+    &:focus{
+      border: 2px solid $brightblue;
+    }
+  }
+}
+
+div.Login {
+  background: $backgroundgrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div.error-message {
+    h3 {
+      color: $orange;
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+  div.panel {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+    width: 500px;
+    height: 70vh;
+    min-height: 450px;
+    margin-top: 10vh;
+    border-radius: 4px;
+    border: 2px solid $darkergrey;
+    // -webkit-box-shadow: 1px 1px 32px 6px rgba(0,0,0,0.1);
+    // box-shadow: 1px 1px 32px 6px rgba(0,0,0,0.1);
+    form {
+      width: 50%;
+      display: inline-flex;
+      // justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      h3 {
+        margin: 0;
+        padding: 15px 0px 7px 5px;
+        font-size: 14px;
+        font-weight: 300;
+        text-align: left;
+        width: 100%;
+      }
+      input {
+        padding: 9px 5px;
+        width: 100%;
+        line-height: 13px;
+        font-size: 15px;
+        text-indent: 5px;
+        outline: none;
+        border-radius: 4px;
+        border: 2px solid $darkergrey;
+        &:focus{
+          border: 2px solid $brightblue;
+        }
+      }
+    }
+    div.button {
+      text-align: center;
+      padding: 10px 30px;
+      margin-top: 30px;
+      width: 120px;
+    }
+  }
+}
+
+// @media only screen and (max-width: 600px) {
+//   div.Home {
+//     grid-template-columns: 8% auto 8% ;
+//     grid-template-rows: 25vh 30% 260px 10% 120px 100px;
+//     div.Heading {
+//       font-size: 5vw ;
+//     }
+//   }
+// }
+// @media only screen and (max-width: 450px) {
+//   div.Home {
+//     grid-template-rows: 20vh 30% 270px 10% 80px 100px;
+//     grid-template-columns: 8% auto 8% ;
+//     div.Heading {
+//       font-size: 22px ;
+//     }
+//   }
+// }

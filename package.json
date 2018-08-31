@@ -1,0 +1,35 @@
+{
+  "name": "unipro-strategy",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^1.4.0",
+    "firebase": "^5.3.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "4.2.2",
+    "react-router-redux": "5.0.0-alpha.6",
+    "react-scripts": "1.1.4",
+    "react-test-renderer": "^16.4.2",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-without": "npm run build-css && react-scripts build",
+    "build": "npm run build-css && react-scripts build && workbox generateSW workbox-config.js && rm -rf build/service-worker.js"
+  },
+  "devDependencies": {
+    "enzyme": "^3.5.0",
+    "enzyme-adapter-react-16": "^1.3.0",
+    "node-sass-chokidar": "^1.3.0",
+    "npm-run-all": "^4.1.3",
+    "workbox-cli": "^3.3.1"
+  }
+}

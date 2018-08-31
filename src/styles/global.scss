@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Biryani:900|Roboto');
+@import "src/styles/_variables";
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  background: $homebackground;
+  color: $navyblue;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+::selection {
+  background: $orange;
+  color: white; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: $orange;
+  color: white;/* Gecko Browsers */
+}
