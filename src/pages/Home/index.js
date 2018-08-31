@@ -1,16 +1,26 @@
-import React, { Component } from 'react';
-import {Footer, About, Heading, Posts} from './modules'
+import React, { Component, Fragment} from 'react';
+import {Footer, About, Heading, Posts, Login} from './modules'
 import './styles/index.css'
+import {connect} from 'react-redux'
 
-export default class Home extends Component {
-  render() {
-    return (
-      <div className="Home">
-        <Heading/>
-        <About/>
-        <Posts/>
-        <Footer/>
-      </div>
-    );
-  }
-}
+const Home = ({loggedIn}) =>
+<Fragment>
+  {
+    loggedIn?
+    <div className="Home">
+      <Heading/>
+      <About/>
+      <Posts/>
+      <Footer/>
+    </div>
+    :
+    <Fragment>
+      <Login text='Unipro Projects'/>
+    </Fragment>
+   }
+</Fragment>
+
+
+export default connect(state => ({
+  loggedIn: state.data.loggedIn,
+}))(Home)
