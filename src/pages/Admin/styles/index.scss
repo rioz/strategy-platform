@@ -189,6 +189,7 @@ div.Admin {
         div.switch {
           // margin-left: 10px;
           display: flex;
+          flex-direction: column;
           justify-content:center;
           align-items: center;
           border-left: 1px solid $darkergrey;
@@ -204,9 +205,26 @@ div.Admin {
               }
             }
           }
+          div.order-val {
+            background: white;
+            width: 80px;
+            line-height: 30px;
+            margin: 10px 0 0 5px;
+            border: 1px solid $darkergrey;
+            text-align: center;
+          }
+          div.order-buttons {
+            transform: translate(3px, 0px);
+            margin-top: 15px;
+            margin-bottom: 10px;
+            div.button {
+              margin: 5px;
+              padding: 5px 15px;
+              display: inline-block;
+            }
+          }
         }
         div.create-notification {
-          // margin-left: 10px;
           border-left: 1px solid $darkergrey;
           display: flex;
           justify-content:center;

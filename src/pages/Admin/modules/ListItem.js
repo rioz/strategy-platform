@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import Switch from '@material-ui/core/Switch';
 
-export default ({openDelete, item, toggleDisplayPost}) =>
+export default ({openDelete, item, toggleDisplayPost, updateOrder}) =>
   <li>
     <div className='date-content'>
       <h3>{item.date}</h3>
@@ -22,5 +22,13 @@ export default ({openDelete, item, toggleDisplayPost}) =>
         onChange={toggleDisplayPost(item)}
         color='default'
       />
+
+      <div className="order-val">
+        2
+      </div>
+      <div className='order-buttons'>
+        <div className='button' onClick={updateOrder(1, item)}>+</div>
+        <div className='button' onClick={updateOrder(-1, item)}>-</div>
+      </div>
     </div>
   </li>

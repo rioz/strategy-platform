@@ -25,6 +25,10 @@ class Posts extends Component {
     toggleDisplayPost(item)
   }
 
+  updateOrder = (value, item) => () => {
+    console.log('updateOrder', value, item)
+  }
+
   render() {
   const {posts} = this.props
   const {deleteOpen,focusedPost} = this.state
@@ -50,6 +54,7 @@ class Posts extends Component {
                   item={item}
                   openDelete={this.openDelete}
                   toggleDisplayPost={this.toggleDisplayPost}
+                  updateOrder={this.updateOrder}
                 />
               )
             }
