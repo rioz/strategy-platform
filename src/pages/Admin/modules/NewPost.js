@@ -4,6 +4,12 @@ import Dialog from '@material-ui/core/Dialog';
 import {uploadPost} from 'store/modules/actions'
 import {NewPostModal} from './Modals'
 
+function findSmallestInteger(array) {
+  for (let i = 1; i < 100000; i++) {
+    if(!array.includes(i)) return i
+  }
+}
+
 class NewPost extends Component {
   state ={
     open: false,
@@ -16,9 +22,10 @@ class NewPost extends Component {
   handleOpen = () => this.setState({open: true})
   handleUpload = () => {
     const {title, description, link} = this.state
-    const {dispatch} = this.props
+    const {dispatch, orderValues} = this.props
+    const nextPostValue = findSmallestInteger(this.props.orderValues)
     if(title.length && description.length && link.length) {
-      uploadPost(dispatch, title, description, link)
+      uploadPost(dispatch, title, description, link, nextPostValue)
       this.handleClose()
     }
   }
@@ -44,4 +51,6 @@ class NewPost extends Component {
   }
 }
 
-export default connect()(NewPost)
+export default connect(state => ({
+  orderValues: state.data.posts.map(post => post.order)
+}))(NewPost)

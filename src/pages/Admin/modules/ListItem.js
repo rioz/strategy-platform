@@ -24,7 +24,7 @@ export default ({openDelete, item, toggleDisplayPost, updateOrder}) =>
       />
 
       <div className="order-val">
-        2
+        {item.order}
       </div>
       <div className='order-buttons'>
         <div className='button' onClick={updateOrder(1, item)}>+</div>

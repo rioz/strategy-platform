@@ -11,16 +11,19 @@ export const SUCCESSFUL_LOGIN = 'SUCCESSFUL_LOGIN'
 export const SUCCESSFUL_LOGIN_READER = 'SUCCESSFUL_LOGIN_READER'
 export const SUCCESSFUL_LOGOUT = 'SUCCESSFUL_LOGOUT'
 export const FAILED_LOGIN = 'FAILED_LOGIN'
+export const SUCCESSFUL_UPDATE = 'SUCCESSFUL_UPDATE'
+export const FAILED_UPDATE = 'FAILED_UPDATE'
 
 // Action creators
 
-export const uploadPost = (dispatch, title, description, link) => {
+export const uploadPost = (dispatch, title, description, link, nextPostValue) => {
   const id = database.ref().child('posts').push().key
   const updates = {};
   updates['/posts/' + id] = {
     title, description, link, id,
     display: true,
-    date: new Date().toString().slice(4,15)
+    date: new Date().toString().slice(4,15),
+    order: nextPostValue
   }
   database.ref().update(updates, (error) => {
     if(error) {
@@ -45,6 +48,18 @@ export const fetchPosts = (dispatch) => {
   })
 }
 
+export const updateOrder = (dispatch, value, item) => {
+  const updates = {};
+  updates['/posts/' + item.id] = {
+    ...item,
+    order: item.order + value? item.order + value : 1
+  }
+  database.ref().update(updates, (error) => {
+    if(error) dispatch({ type: FAILED_UPDATE })
+    else dispatch({ type: SUCCESSFUL_UPDATE })
+  })
+}
+
 export const logIn = (dispatch, email, password) => {
   auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() =>
   auth.signInWithEmailAndPassword(email, password)).catch(error => {
@@ -58,7 +73,6 @@ export const logIn = (dispatch, email, password) => {
       const uid = user.uid;
       database.ref('users/' + uid).on('value', snapshot => {
         const userRole =  snapshot.val().role
-        console.log('snapshot.val()', snapshot.val())
         if(userRole === 'reader') {
           dispatch({
             type: SUCCESSFUL_LOGIN_READER,

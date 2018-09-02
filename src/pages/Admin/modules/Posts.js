@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux'
 import {DeleteModal} from './Modals'
 import ListItem from './ListItem'
-import {deletePost, toggleDisplayPost} from 'store/modules/actions'
+import {deletePost, toggleDisplayPost, updateOrder} from 'store/modules/actions'
 
 class Posts extends Component {
   state = {
@@ -21,13 +21,8 @@ class Posts extends Component {
     })
   }
   closeDelete = () => this.setState({deleteOpen: false})
-  toggleDisplayPost = (item) => () => {
-    toggleDisplayPost(item)
-  }
-
-  updateOrder = (value, item) => () => {
-    console.log('updateOrder', value, item)
-  }
+  toggleDisplayPost = (item) => () => toggleDisplayPost(item)
+  updateOrder = (value, item) => () => updateOrder(this.props.dispatch, value, item)
 
   render() {
   const {posts} = this.props
@@ -48,7 +43,7 @@ class Posts extends Component {
               <h3 className='display'>Display</h3>
             </li>
             {
-              posts.map((item, i) =>
+              posts.sort((a, b) => a.order - b.order).map((item, i) =>
                 <ListItem
                   key={item.title + i}
                   item={item}

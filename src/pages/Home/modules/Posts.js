@@ -28,7 +28,10 @@ const Posts = ({posts}) =>
 <div className='Posts'>
   <ul>
     {
-      posts.filter(item => item.display).map((item, i) => <ListItem key={item.title + i} item={item}/>)
+      posts
+        .filter(item => item.display)
+        .sort((a, b) => a.order - b.order)
+        .map((item, i) => <ListItem key={item.title + i} item={item}/>)
     }
   </ul>
 </div>
