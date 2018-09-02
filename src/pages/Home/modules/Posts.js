@@ -16,7 +16,7 @@ class ListItem extends Component {
     return (
       <li onMouseLeave={this.onMouseLeave} onMouseOver={this.onMouseOver}>
         <h3>{item.title}</h3>
-        <p>{item.description}</p>
+        <p dangerouslySetInnerHTML={{__html: item.description}} />
         <Arrow display={this.state.hover}/>
         <a href={item.link} target="_blank"/>
       </li>

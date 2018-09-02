@@ -27,7 +27,6 @@ class Login extends Component {
   handleLogin = () => {
     const {email, password} = this.state
     if(password.length){
-      console.log('loginAttempt', email, password)
       logIn(this.props.dispatch, email, password)
     }
   }

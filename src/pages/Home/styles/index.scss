@@ -58,10 +58,13 @@ div.Home {
           font-weight: 500;
         }
         p {
-          line-height: 1.5;
+          line-height: 1.6;
           margin: 0;
           font-size: 15px;
-          padding: 7px 0;
+          padding: 15px 0;
+          span {
+            color: $orange;
+          }
         }
         a {
           position: absolute;

@@ -10,7 +10,7 @@ export default ({state, handleClose, handleTextInput, handleUpload}) =>
       <div>Title</div>
       <input onChange={handleTextInput} value={state.title} data-type='title' type="text"/>
       <div>Description</div>
-      <input onChange={handleTextInput} value={state.description} data-type='description' type="text"/>
+      <textarea onChange={handleTextInput} value={state.description} data-type='description' type="text"/>
       <div>Link</div>
       <input onChange={handleTextInput} value={state.link} data-type='link' type="text"/>
       <div className='upload-post'>

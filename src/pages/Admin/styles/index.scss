@@ -152,7 +152,7 @@ div.Admin {
           padding: 15px 0;
           display: grid;
           grid-template-columns:4fr 108px 30px;
-          grid-template-rows:1fr 1fr 1fr;
+          grid-template-rows:45px 1fr 45px;
           h3 {
             padding: 5px 0;
             grid-column: 1;
@@ -162,12 +162,13 @@ div.Admin {
             line-height: 1.5;
             margin: 0;
             font-size: 15px;
-            padding: 5px 0;
+            padding: 10px 0;
             &.link {
               grid-column: 1;
               grid-row: 3;
             }
             &.description {
+              padding-right: 20px;
               grid-column: 1;
               grid-row: 2;
             }
@@ -176,6 +177,9 @@ div.Admin {
             grid-column: 2;
             grid-row: 2;
             text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             div {
               background: $darkergrey;
               color: $navyblue;
@@ -235,11 +239,12 @@ div.modal {
   max-width: 600px;
   width: 80vw;
   height: 60vh;
-  display: flex;
+  // display: flex;
   justify-content: center;
   align-self: center;
   flex-direction: column;
   padding: 0 25px 30px 25px;
+  overflow-y: scroll;
   div {
     padding: 20px 0 7px 5px;
   }
@@ -276,9 +281,14 @@ div.modal {
       // background: $orange;
     }
   }
-  input {
+  textarea {
+    min-height: 80px;
+  }
+  input, textarea {
     padding: 10px 5px;
     width: 100%;
+    min-width: 100%;
+    max-width: 100%;
     line-height: 20px;
     font-size: 16px;
     text-indent: 5px;

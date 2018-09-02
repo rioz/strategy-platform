@@ -8,7 +8,9 @@ export default ({openDelete, item, toggleDisplayPost}) =>
     </div>
     <div className='post-content'>
       <h3>{item.title}</h3>
-      <p className='description'>{item.description}</p>
+      <p className='description'>
+        {item.description}
+      </p>
       <p className='link'>{item.link}</p>
       <div className='delete'>
         <div className='button' onClick={openDelete(item)}>Delete</div>

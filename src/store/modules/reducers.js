@@ -9,6 +9,20 @@ const initialState = {
   error: false
 }
 
+
+
+function findSmallestInteger(array) {
+  for (let i = 1; i < 100000; i++) {
+    if(!array.includes(i)) return i
+  }
+}
+
+
+const arr = []
+const val = findSmallestInteger(arr)
+// console.log('val', val)
+
+
 export default (state=initialState, action) => {
   switch(action.type){
     case RECEIVE_POSTS: {
