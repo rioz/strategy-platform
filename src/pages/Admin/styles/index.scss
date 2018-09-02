@@ -163,6 +163,7 @@ div.Admin {
             margin: 0;
             font-size: 15px;
             padding: 10px 0;
+            span {color: $orange;}
             &.link {
               grid-column: 1;
               grid-row: 3;
@@ -180,7 +181,9 @@ div.Admin {
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             div {
+              margin: 20px 0;
               background: $darkergrey;
               color: $navyblue;
             }
@@ -269,7 +272,7 @@ div.modal {
   &.notification {
     min-height: 500px;
   }
-  &.delete, &.notification {
+  &.delete, &.notification, &.edit{
     padding: 10px 45px 10px 45px;
     h4 {
       padding: 5px 0 10px 0;
@@ -285,6 +288,9 @@ div.modal {
       }
     }
   }
+  &.edit {
+    padding: 10px 15px 50px 15px;
+  }
   div.upload-post {
     display: flex;
     justify-content: center;
@@ -298,9 +304,6 @@ div.modal {
       padding: 10px 25px;
       // background: $orange;
     }
-  }
-  textarea {
-    min-height: 80px;
   }
   input, textarea {
     padding: 10px 5px;
@@ -316,6 +319,10 @@ div.modal {
     &:focus{
       border: 2px solid $brightblue;
     }
+  }
+  textarea {
+    min-height: 80px;
+    text-indent: 0px;
   }
 }
 

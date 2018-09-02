@@ -13,6 +13,8 @@ export const SUCCESSFUL_LOGOUT = 'SUCCESSFUL_LOGOUT'
 export const FAILED_LOGIN = 'FAILED_LOGIN'
 export const SUCCESSFUL_UPDATE = 'SUCCESSFUL_UPDATE'
 export const FAILED_UPDATE = 'FAILED_UPDATE'
+export const SUCCESSFUL_EDIT = 'SUCCESSFUL_EDIT'
+export const FAILED_EDIT = 'FAILED_EDIT'
 
 // Action creators
 
@@ -102,6 +104,20 @@ export const toggleDisplayPost = (item) => {
 
 export const deletePost = (dispatch, id) => {
   database.ref('posts/' + id).remove()
+}
+
+export const editPost = (dispatch, oldPost, newPost) => {
+  const updates = {};
+  updates['/posts/' + oldPost.id] = {
+    ...oldPost,
+    title: newPost.title,
+    description: newPost.description,
+    link: newPost.link
+   }
+  database.ref().update(updates, (error) => {
+    if(error) dispatch({ type: FAILED_EDIT })
+    else dispatch({ type: SUCCESSFUL_EDIT })
+  })
 }
 
 export const logOut = () => {

@@ -1,12 +1,13 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux'
-import {DeleteModal} from './Modals'
+import {DeleteModal, EditModal} from './Modals'
 import ListItem from './ListItem'
-import {deletePost, toggleDisplayPost, updateOrder} from 'store/modules/actions'
+import {deletePost, toggleDisplayPost, updateOrder, editPost} from 'store/modules/actions'
 
 class Posts extends Component {
   state = {
     deleteOpen: false,
+    editOpen: false,
     focusedPost: {}
   }
 
@@ -14,19 +15,30 @@ class Posts extends Component {
     deletePost(this.props.dispatch, id)
     this.closeDelete()
   }
+  handleEdit = (oldPost, newPost) => () => {
+    editPost(this.props.dispatch, oldPost, newPost)
+    this.closeEdit()
+  }
   openDelete = (item) => () => {
     this.setState({
       deleteOpen: true,
       focusedPost: item
     })
   }
+  openEdit = (item) => () => {
+    this.setState({
+      editOpen: true,
+      focusedPost: item
+    })
+  }
   closeDelete = () => this.setState({deleteOpen: false})
+  closeEdit = () => this.setState({editOpen: false})
   toggleDisplayPost = (item) => () => toggleDisplayPost(item)
   updateOrder = (value, item) => () => updateOrder(this.props.dispatch, value, item)
 
   render() {
   const {posts} = this.props
-  const {deleteOpen,focusedPost} = this.state
+  const {deleteOpen,focusedPost,editOpen} = this.state
     return (
       <Fragment>
         <DeleteModal
@@ -34,6 +46,12 @@ class Posts extends Component {
           deleteOpen={deleteOpen}
           closeDelete={this.closeDelete}
           handleDelete={this.handleDelete}
+        />
+        <EditModal
+          focusedPost={focusedPost}
+          editOpen={editOpen}
+          closeEdit={this.closeEdit}
+          handleEdit={this.handleEdit}
         />
         <div className='Posts'>
           <ul>
@@ -48,6 +66,7 @@ class Posts extends Component {
                   key={item.title + i}
                   item={item}
                   openDelete={this.openDelete}
+                  openEdit={this.openEdit}
                   toggleDisplayPost={this.toggleDisplayPost}
                   updateOrder={this.updateOrder}
                 />
@@ -61,5 +80,5 @@ class Posts extends Component {
 }
 
 export default connect(state => ({
-  posts: state.data.posts,
+  posts: state.data.posts
 }))(Posts)
