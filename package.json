@@ -22,8 +22,7 @@
     "eject": "react-scripts eject",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
-    "build-without": "npm run build-css && react-scripts build",
-    "build": "npm run build-css && react-scripts build && workbox generateSW workbox-config.js && rm -rf build/service-worker.js"
+    "build": "npm run build-css && react-scripts build"
   },
   "devDependencies": {
     "enzyme": "^3.5.0",
