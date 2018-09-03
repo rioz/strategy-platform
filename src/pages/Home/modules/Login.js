@@ -5,7 +5,7 @@ import {logIn} from 'store/modules/actions'
 class Login extends Component {
 
   state = {
-    email: 'default@default.com',
+    email: 'uniproinnovation@gmail.com',
     password: ''
   }
 

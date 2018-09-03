@@ -62,14 +62,8 @@ export const updateOrder = (dispatch, value, item) => {
   })
 }
 
-export const logIn = (dispatch, email, password) => {
-  auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() =>
-  auth.signInWithEmailAndPassword(email, password)).catch(error => {
-    dispatch({
-      type: FAILED_LOGIN
-    })
-  })
 
+export const checkIfLoggedIn = (dispatch) => {
   auth.onAuthStateChanged(user => {
     if (user) {
       const uid = user.uid;
@@ -94,6 +88,17 @@ export const logIn = (dispatch, email, password) => {
       })
     }
   })
+}
+
+export const logIn = (dispatch, email, password) => {
+  auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() =>
+  auth.signInWithEmailAndPassword(email, password)).catch(error => {
+    dispatch({
+      type: FAILED_LOGIN
+    })
+  })
+
+  checkIfLoggedIn(dispatch)
 }
 
 export const toggleDisplayPost = (item) => {
