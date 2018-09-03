@@ -14,7 +14,12 @@ class ListItem extends Component {
   render() {
     const {item} = this.props
     return (
-      <li onMouseLeave={this.onMouseLeave} onMouseOver={this.onMouseOver}>
+      <li
+        onMouseLeave={this.onMouseLeave}
+        onMouseOver={this.onMouseOver}
+        onTouchEnd={this.onMouseLeave}
+        onTouchStart={this.onMouseOver}
+        >
         <h3>{item.title}</h3>
         <p dangerouslySetInnerHTML={{__html: item.description}} />
         <Arrow display={this.state.hover}/>
