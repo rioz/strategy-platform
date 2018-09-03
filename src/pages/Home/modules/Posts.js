@@ -18,7 +18,7 @@ class ListItem extends Component {
         onMouseLeave={this.onMouseLeave}
         onMouseOver={this.onMouseOver}
         onTouchEnd={this.onMouseLeave}
-        onTouchStart={this.onMouseOver}
+        onBlur={this.onMouseLeave}
         >
         <h3>{item.title}</h3>
         <p dangerouslySetInnerHTML={{__html: item.description}} />

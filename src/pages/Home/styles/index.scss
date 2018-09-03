@@ -129,6 +129,20 @@ div.Home {
     div.About {
       padding-top: 10px;
     }
+
+    div.Posts {
+      // background: red;
+      ul {
+        li {
+          padding: 15px 30px 15px 0;
+          &::before{
+            display: none;
+          }
+        }
+      }
+    }
+
+
   }
 }
 @media only screen and (max-width: 450px) {
