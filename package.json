@@ -22,7 +22,7 @@
     "eject": "react-scripts eject",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
-    "build": "npm run remove-line && build-css && react-scripts build && add-line",
+    "build": "npm run remove-line && npm run build-css && react-scripts build && npm run add-line",
     "remove-line": "sed -i '' '$d' .gitignore",
     "add-line": "echo 'firebase-config.js' >> .gitignore"
   },
